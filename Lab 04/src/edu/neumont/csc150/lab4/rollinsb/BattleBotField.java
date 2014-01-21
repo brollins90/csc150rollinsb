@@ -26,6 +26,22 @@ public class BattleBotField {
 
 		bots = new BattleBot[0];
 	}
+	
+	/**
+	 * Creates an instance of the BattleBotField that is specific to lab 4.  It uses an initializer list to 
+	 * add the four bots to the corners of the field
+	 * @param numberOfColumns	The number of columns in the field
+	 * @param numberOfRows	The number of rows in the field
+	 * @param labNumber The lab number that we are on
+	 */
+	public BattleBotField(int numberOfColumns, int numberOfRows, int labNumber) {
+		
+		field = new boolean[numberOfColumns][numberOfRows];
+		
+		if (labNumber == 4 || labNumber != 4) {
+			bots = new BattleBot[] {new BattleBot(0, 0), new BattleBot(0, numberOfRows - 1), new BattleBot(numberOfColumns - 1, 0), new BattleBot(numberOfColumns - 1, numberOfRows - 1)};
+		}
+	}
 
 	/**
 	 * Adds a BattleBot object to the field
