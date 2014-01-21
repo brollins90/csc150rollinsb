@@ -1,5 +1,7 @@
 package edu.neumont.csc150.lab5.rollinsb;
 
+import java.util.Random;
+
 /**
  * The BattleBotField holds an 2 dimensional array of Booleans representing the
  * locations of the Bots Also holds an array of BattleBot objects
@@ -11,6 +13,7 @@ public class BattleBotField {
 
 	private BattleBot[] bots;
 	private boolean[][] field;
+	private Random rand;
 
 	/**
 	 * Creates a BattleBotField of the specified dimensions. Creates an empty
@@ -22,6 +25,7 @@ public class BattleBotField {
 	 *            The number of columns for the field
 	 */
 	public BattleBotField(int numberOfColumns, int numberOfRows) {
+		rand = new Random();
 		field = new boolean[numberOfColumns][numberOfRows];
 
 		bots = new BattleBot[0];
@@ -42,6 +46,11 @@ public class BattleBotField {
 		newBots[bots.length] = newBot;
 
 		bots = newBots;
+	}
+	
+	public void addRandomLocationBot() {
+		BattleBot newBot = new BattleBot(getRandomColumn(), getRandomRow());
+		addBot(newBot);
 	}
 	
 	/**
@@ -74,6 +83,20 @@ public class BattleBotField {
 	 */
 	public int getNumberOfRows() {
 		return field[0].length;
+	}
+	
+	/**
+	 * Returns a random column
+	 */
+	public int getRandomColumn() {
+		return rand.nextInt(getNumberOfColumns());
+	}
+	
+	/**
+	 * Returns a random row
+	 */
+	public int getRandomRow() {
+		return rand.nextInt(getNumberOfRows());
 	}
 
 	/**
