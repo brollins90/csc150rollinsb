@@ -133,7 +133,7 @@ public class BattleBotField {
 		// Add the array to the output
 		for (int rowIndex = 0; rowIndex < getNumberOfRows(); rowIndex++) {
 			for (int columnIndex = 0; columnIndex < getNumberOfColumns(); columnIndex++) {
-				outString += (field[columnIndex][rowIndex]) ? "X" : "O";
+				outString += (field[columnIndex][rowIndex]) ? "X" : "-";
 			}
 			outString += "\n";
 		}
