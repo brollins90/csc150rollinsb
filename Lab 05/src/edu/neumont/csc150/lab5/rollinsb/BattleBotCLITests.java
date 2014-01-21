@@ -188,6 +188,22 @@ public class BattleBotCLITests {
 		System.out.print("Random speed gen test 1: (-3, 3, 1000): ");
 		System.out.println(checkRandomSpeedRange(-3,3,1000));
 		
+		System.out.print("Create a Bot with a random location 1: ");
+		testField = new BattleBotField(10, 10);
+		testField.addRandomLocationBot();
+		System.out.println(checkBotIsOnField(testField));
+		
+		System.out.print("Create a Bot with a random location 2 (100 times): ");
+		boolean hasSucceededEachTime = true;
+		for (int i = 0; i < 100; i++) {
+			testField = new BattleBotField(10, 10);
+			testField.addRandomLocationBot();
+			if (hasSucceededEachTime) {
+				hasSucceededEachTime = checkBotIsOnField(testField);
+			}
+		}
+		System.out.println(hasSucceededEachTime);
+		
 		
 		
 		
