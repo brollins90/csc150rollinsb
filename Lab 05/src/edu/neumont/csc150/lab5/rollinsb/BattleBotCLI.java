@@ -26,14 +26,9 @@ public class BattleBotCLI {
 			int numberOfTimeUnits = Integer.parseInt(args[2]);
 			int numberOfBots = Integer.parseInt(args[3]);
 			
-			// Create a field
-			BattleBotField testBoard = new BattleBotField(numberOfCols, numberOfRows);
-			
-			// Add X number of random bots
-			for (int i = 0; i < numberOfBots; i++) {
-				testBoard.addRandomLocationBot();
-			}
-			
+			// Create a field with inputed number of bots
+			BattleBotField testBoard = new BattleBotField(numberOfCols, numberOfRows, numberOfBots);
+						
 			// Move the bots
 			testBoard.moveBots(numberOfTimeUnits);
 			

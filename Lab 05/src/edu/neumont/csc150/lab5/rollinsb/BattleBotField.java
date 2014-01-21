@@ -30,6 +30,16 @@ public class BattleBotField {
 
 		bots = new BattleBot[0];
 	}
+	
+	public BattleBotField(int numberOfColumns, int numberOfRows, int numberOfBots) {
+		rand = new Random();
+		field = new boolean[numberOfColumns][numberOfRows];
+
+		bots = new BattleBot[numberOfBots];
+		for (int i = 0; i < numberOfBots; i++) {
+			bots[i] = new BattleBot(getRandomColumn(), getRandomRow());
+		}
+	}
 
 	/**
 	 * Adds a BattleBot object to the field
