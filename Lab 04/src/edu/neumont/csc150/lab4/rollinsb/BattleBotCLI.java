@@ -39,29 +39,26 @@ public class BattleBotCLI {
 	 */
 	public static void main(String[] args) {
 
-		BattleBotCLI program = new BattleBotCLI();
-
-		// If there are 4 args, then it is the first lab
-		if (args.length == 4) {
-			int sizeOfBoard = Integer.parseInt(args[0]);
-			int numberOfRowsMoved = Integer.parseInt(args[1]);
-			int numberOfColsMoved = Integer.parseInt(args[2]);
-			int numberOfTimeUnits = Integer.parseInt(args[3]);
-
-			BattleBotField testBoard = new BattleBotField(sizeOfBoard, sizeOfBoard);
-			program.placeBot(testBoard, 0, 0, numberOfRowsMoved, numberOfColsMoved);
-			testBoard.moveBots(numberOfTimeUnits);
-			System.out.println(testBoard);
-
-		} else {
-			//System.out.println("Invalid number of arguments.");
+		BattleBotCLI program = new BattleBotCLI();		
+		
+		// For the third / fourth lab we are placing 4 Bots in the corners of a board.
+		// We are going to pass in three arguments, the number of cols in 
+		// the board, the number of rows in the board and the number of time units to process before 
+		// printing the board.
+		if (args.length == 3) {
+			int numberOfCols = Integer.parseInt(args[0]);
+			int numberOfRows = Integer.parseInt(args[1]);
+			int numberOfTimeUnits = Integer.parseInt(args[2]);
 			
-			BattleBotField testBoard = new BattleBotField(10, 7);
+			BattleBotField testBoard = new BattleBotField(numberOfCols, numberOfRows);
 			program.placeFourCornerBots(testBoard);
-			testBoard.moveBots(10);
+			testBoard.moveBots(numberOfTimeUnits);
 			System.out.println(testBoard.toString());
-			
+		} else {
+			System.out.println("Invalid number of arguments:");
+			System.out.println("Usage: java edu.neumont.csc150.lab4.rollinsb.BattleBotCLI numberOfCols numberOfRows amountOfTime");
 		}
+		
 
 	}
 
