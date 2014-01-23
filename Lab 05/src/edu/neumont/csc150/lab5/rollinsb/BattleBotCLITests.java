@@ -40,6 +40,19 @@ public class BattleBotCLITests {
 	}
 	
 	/**
+	 * Will check the field output and verify that there is no empty spaces
+	 * @param bbField the field to test
+	 * @return If there is no empty spaces on the field
+	 */
+	public boolean checkNoEmptySpots(BattleBotField bbField) {
+		String fieldString = bbField.toString();
+		if (fieldString.indexOf('-') == -1) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * Check the bot's random speed generator
 	 * @param min min allowed speed
 	 * @param max max allowed speed
@@ -190,19 +203,26 @@ public class BattleBotCLITests {
 		
 		System.out.print("Create a Bot with a random location 1: ");
 		testField = new BattleBotField(10, 10);
-		testField.addRandomLocationBot();
+		testField.addBot();
 		System.out.println(checkBotIsOnField(testField));
 		
 		System.out.print("Create a Bot with a random location 2 (100 times): ");
 		boolean hasSucceededEachTime = true;
 		for (int i = 0; i < 100; i++) {
 			testField = new BattleBotField(10, 10);
-			testField.addRandomLocationBot();
+			testField.addBot();
 			if (hasSucceededEachTime) {
 				hasSucceededEachTime = checkBotIsOnField(testField);
 			}
 		}
 		System.out.println(hasSucceededEachTime);
+		
+		System.out.print("Create a Bot with a random location 3 (fill the board): ");
+		testField = new BattleBotField(5, 5);
+		for (int i = 0; i < 1000; i++) {
+			testField.addBot();
+		}
+		System.out.println(checkNoEmptySpots(testField));
 		
 		
 		

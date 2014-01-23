@@ -19,10 +19,8 @@ public class BattleBotField {
 	 * Creates a BattleBotField of the specified dimensions. Creates an empty
 	 * array of BattleBots.
 	 * 
-	 * @param numberOfRows
-	 *            The number of rows for the field
-	 * @param numberOfColumns
-	 *            The number of columns for the field
+	 * @param numberOfRows  The number of rows for the field
+	 * @param numberOfColumns  The number of columns for the field
 	 */
 	public BattleBotField(int numberOfColumns, int numberOfRows) {
 		rand = new Random();
@@ -30,22 +28,36 @@ public class BattleBotField {
 
 		bots = new BattleBot[0];
 	}
-	
+
+	/**
+	 * Creates a BattleBotField of the specified dimensions. Creates an array of BattleBots in random locations.
+	 * 
+	 * @param numberOfRows  The number of rows for the field
+	 * @param numberOfColumns  The number of columns for the field
+	 * @param numberOfBots  The number of Bots to place on the field
+	 */
 	public BattleBotField(int numberOfColumns, int numberOfRows, int numberOfBots) {
 		rand = new Random();
 		field = new boolean[numberOfColumns][numberOfRows];
 
 		bots = new BattleBot[numberOfBots];
 		for (int i = 0; i < numberOfBots; i++) {
-			bots[i] = new BattleBot(getRandomColumn(), getRandomRow());
+			bots[i] = new BattleBot(getRandomLocation(getNumberOfColumns()), getRandomLocation(getNumberOfRows()));
 		}
+	}
+
+	/**
+	 * Adds a BattleBot object to the field in a random location
+	 */
+	public void addBot() {
+		BattleBot newBot = new BattleBot(getRandomLocation(getNumberOfColumns()), getRandomLocation(getNumberOfRows()));
+		addBot(newBot);
 	}
 
 	/**
 	 * Adds a BattleBot object to the field
 	 * 
-	 * @param newBot
-	 *            The new BattleBot object to be added
+	 * @param newBot  The new BattleBot object to be added
 	 */
 	public void addBot(BattleBot newBot) {
 		BattleBot[] newBots = new BattleBot[bots.length + 1];
@@ -56,11 +68,6 @@ public class BattleBotField {
 		newBots[bots.length] = newBot;
 
 		bots = newBots;
-	}
-	
-	public void addRandomLocationBot() {
-		BattleBot newBot = new BattleBot(getRandomColumn(), getRandomRow());
-		addBot(newBot);
 	}
 	
 	/**
@@ -96,17 +103,11 @@ public class BattleBotField {
 	}
 	
 	/**
-	 * Returns a random column
+	 * Returns a random int in the specified range
+	 * @param range  The range of numbers
 	 */
-	public int getRandomColumn() {
-		return rand.nextInt(getNumberOfColumns());
-	}
-	
-	/**
-	 * Returns a random row
-	 */
-	public int getRandomRow() {
-		return rand.nextInt(getNumberOfRows());
+	public int getRandomLocation(int range) {
+		return rand.nextInt(range);
 	}
 
 	/**
