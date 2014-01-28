@@ -8,7 +8,7 @@ import java.util.Random;
  * @author Blake
  * 
  */
-public class Bot {
+public class BattleBot {
 
 	private int column;
 	private int row;
@@ -22,7 +22,7 @@ public class Bot {
 	 * @param columnIn
 	 * @param rowIn
 	 */
-	public Bot(int columnIn, int rowIn) {
+	public BattleBot(int columnIn, int rowIn) {
 		rand = new Random();
 		column = columnIn;
 		row = rowIn;
@@ -38,7 +38,7 @@ public class Bot {
 	 * @param columnSpeedIn
 	 * @param rowSpeedIn
 	 */
-	public Bot(int columnIn, int rowIn, int columnSpeedIn, int rowSpeedIn) {
+	public BattleBot(int columnIn, int rowIn, int columnSpeedIn, int rowSpeedIn) {
 		rand = new Random();
 		column = columnIn;
 		row = rowIn;
