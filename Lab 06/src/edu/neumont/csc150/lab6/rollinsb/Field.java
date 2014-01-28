@@ -7,7 +7,7 @@ package edu.neumont.csc150.lab6.rollinsb;
  * @author Blake Rollins
  * 
  */
-public class BattleBotField {
+public class Field {
 	
 	private String[][] field;
 
@@ -17,7 +17,7 @@ public class BattleBotField {
 	 * @param numberOfRows  The number of rows for the field
 	 * @param numberOfColumns  The number of columns for the field
 	 */
-	public BattleBotField(int numberOfColumns, int numberOfRows) {
+	public Field(int numberOfColumns, int numberOfRows) {
 		
 		field = new String[numberOfColumns][numberOfRows];
 		

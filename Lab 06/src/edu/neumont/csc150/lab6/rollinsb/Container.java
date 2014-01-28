@@ -2,7 +2,7 @@ package edu.neumont.csc150.lab6.rollinsb;
 
 import java.util.Random;
 
-public class BattleBotContainer {
+public class Container {
 
 	private BattleBot[] bots;
 	private Random rand;
@@ -13,7 +13,7 @@ public class BattleBotContainer {
 	 * @param numberOfColumns	The number of columns on the field (to create the BattleBots in bounds)
 	 * @param numberOfRows		The number of rows on the field (to create the BattleBots in bounds)
 	 */
-	public BattleBotContainer(int numberOfBots, int numberOfColumns, int numberOfRows) {
+	public Container(int numberOfBots, int numberOfColumns, int numberOfRows) {
 		
 		rand = new Random();
 		bots = new BattleBot[numberOfBots];

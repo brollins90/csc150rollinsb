@@ -1,6 +1,6 @@
 package edu.neumont.csc150.lab6.rollinsb;
 
-public class BattleBotController {
+public class Controller {
 
 	public static void main(String[] args) {
 		
@@ -17,10 +17,10 @@ public class BattleBotController {
 		
 		
 		// Make a Field 
-		BattleBotField bbField = new BattleBotField(numberOfCols, numberOfRows);
+		Field bbField = new Field(numberOfCols, numberOfRows);
 
 		// Make a Container
-		BattleBotContainer bbContainer = new BattleBotContainer(numberOfBots, numberOfCols, numberOfRows);
+		Container bbContainer = new Container(numberOfBots, numberOfCols, numberOfRows);
 		
 		// Move Bots
 		bbContainer.moveBots(numberOfTimeUnits);
