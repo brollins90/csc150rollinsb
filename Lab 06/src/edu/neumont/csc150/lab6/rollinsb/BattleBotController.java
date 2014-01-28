@@ -5,10 +5,10 @@ public class BattleBotController {
 	public static void main(String[] args) {
 		
 		args = new String[4];
-		args[0] = "7";
-		args[1] = "10";
-		args[2] = "0";
-		args[3] = "5";
+		args[0] = "7";  // columns
+		args[1] = "10"; // rows
+		args[2] = "1";	// time
+		args[3] = "5";	// bots
 		
 		int numberOfCols = Integer.parseInt(args[0]);
 		int numberOfRows = Integer.parseInt(args[1]);
@@ -23,17 +23,20 @@ public class BattleBotController {
 		BattleBotContainer bbContainer = new BattleBotContainer(numberOfBots, numberOfCols, numberOfRows);
 		
 		// Move Bots
-		bbContainer.moveBots(2);
+		bbContainer.moveBots(numberOfTimeUnits);
 		
 		// Check validity of bot locations
 		for (int i = 0; i < bbContainer.getNumberOfBots(); i++) {
 			int botColumn = bbContainer.getBot(i).getColumn();
 			int botRow = bbContainer.getBot(i).getRow();
-			boolean validLocation =bbField.isValidLocation(botColumn,botRow); 
-			System.out.println(validLocation);
+			boolean validLocation =bbField.isLocationOnField(botColumn,botRow); 
+			//if (validLocation) {
+				bbField.placeBot(botColumn,  botRow);
+			//}
+			//System.out.println(validLocation);
 		}
-		
-		System.out.println("wait");
+
+		System.out.println(bbField);
 		
 	}
 }

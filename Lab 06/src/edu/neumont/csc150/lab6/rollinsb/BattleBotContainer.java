@@ -8,10 +8,10 @@ public class BattleBotContainer {
 	private Random rand;
 	
 	/**
-	 * Creates a BattleBotContainer with the specified number of Bots
-	 * @param numberOfBots
-	 * @param numberOfColumns
-	 * @param numberOfRows
+	 * Creates a BattleBotContainer with the specified number of BattleBots.
+	 * @param numberOfBots		The number of BattleBots to create
+	 * @param numberOfColumns	The number of columns on the field (to create the BattleBots in bounds)
+	 * @param numberOfRows		The number of rows on the field (to create the BattleBots in bounds)
 	 */
 	public BattleBotContainer(int numberOfBots, int numberOfColumns, int numberOfRows) {
 		
@@ -24,10 +24,14 @@ public class BattleBotContainer {
 	
 	/**
 	 * Returns the BattleBot at the specified index
+	 * @param botIndex	The index of the BattleBot
+	 * @return	The BattleBot at the specified index
 	 */
 	public BattleBot getBot(int botIndex) {
-		// TODO: Check NullPointer
-		return bots[botIndex];
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return bots[botIndex];
+		}
+		return null;
 	}
 	
 	/**
@@ -44,15 +48,6 @@ public class BattleBotContainer {
 	 */
 	public int getRandomLocation(int range) {
 		return rand.nextInt(range);
-	}
-
-	/**
-	 * Updates the location of each BattleBot on the field by calling the move
-	 * method of each Bot.
-	 */
-	public void moveBots() {
-		moveBots(1);
-
 	}
 
 	/**

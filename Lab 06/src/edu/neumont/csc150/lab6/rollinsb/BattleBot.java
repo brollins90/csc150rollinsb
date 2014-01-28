@@ -18,7 +18,6 @@ public class BattleBot {
 
 	/**
 	 * The BattleBot needs a starting row and column and will set a random speed
-	 * 
 	 * @param columnIn
 	 * @param rowIn
 	 */
@@ -87,12 +86,12 @@ public class BattleBot {
 	}
 	
 	/**
-	 * Moves the BattleBot any number of time units
+	 * Moves the BattleBot the specified number of time units
 	 * @param additionalTimeUnits
 	 */
-	public void move(int additionalTimeUnits) {
-		column += (columnSpeed * additionalTimeUnits);
-		row += (rowSpeed * additionalTimeUnits);
+	public void move(int timeUnits) {
+		column += (columnSpeed * timeUnits);
+		row += (rowSpeed * timeUnits);
 	}
 
 }
