@@ -3,10 +3,8 @@ package edu.neumont.csc150.lab6.rollinsb;
 import java.util.Random;
 
 /**
- * The BattleBot object moves around on the BattleBotField
- * 
- * @author Blake
- * 
+ * The BattleBot object contains all the information related to a BattleBot * 
+ * @author Blake Rollins 
  */
 public class BattleBot {
 

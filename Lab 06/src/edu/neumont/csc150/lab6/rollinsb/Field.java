@@ -19,9 +19,10 @@ public class Field {
 	 */
 	public Field(int numberOfColumns, int numberOfRows) {
 		
+		// Create a new [][]
 		field = new String[numberOfColumns][numberOfRows];
 		
-		// clearField initializes the array to all "empty" values
+		// Initialize the [][] to all "empty" values
 		clearField();
 	}
 	

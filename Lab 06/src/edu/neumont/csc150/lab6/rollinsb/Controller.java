@@ -25,12 +25,10 @@ public class Controller {
 		// Move Bots
 		bbContainer.moveBots(numberOfTimeUnits);
 		
-		// Check place the bots on the field
-		for (int i = 0; i < bbContainer.getNumberOfBots(); i++) {
-			int botColumn = bbContainer.getBotColumn(i);
-			int botRow = bbContainer.getBotRow(i);
-			bbField.placeBot(botColumn,  botRow);
-		}
+		// Give the Field to the container to add the Bots
+		bbContainer.placeBotsOnField(bbField);
+		
+		// Print the Field
 		System.out.println(bbField);
 		
 	}

@@ -13,8 +13,7 @@ public class Container {
 	 * @param numberOfColumns	The number of columns on the field (to create the BattleBots in bounds)
 	 * @param numberOfRows		The number of rows on the field (to create the BattleBots in bounds)
 	 */
-	public Container(int numberOfBots, int numberOfColumns, int numberOfRows) {
-		
+	public Container(int numberOfBots, int numberOfColumns, int numberOfRows) {		
 		rand = new Random();
 		bots = new BattleBot[numberOfBots];
 		for (int i = 0; i < numberOfBots; i++) {
@@ -23,54 +22,10 @@ public class Container {
 	}
 	
 	/**
-	 * Returns the column number of the BattleBot at the specified index
-	 * @param botIndex	The index of the BattleBot
-	 * @return	The BattleBot at the specified index's column
-	 */
-	public int getBotColumn(int botIndex) {
-		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-			return bots[botIndex].getColumn();
-		}
-		return 0;
-	}
-	
-	/**
-	 * Returns the row number of the BattleBot at the specified index
-	 * @param botIndex	The index of the BattleBot
-	 * @return	The BattleBot at the specified index's row
-	 */
-	public int getBotRow(int botIndex) {
-		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-			return bots[botIndex].getRow();
-		}
-		return 0;
-	}
-	
-//	/**
-//	 * Returns the BattleBot at the specified index
-//	 * @param botIndex	The index of the BattleBot
-//	 * @return	The BattleBot at the specified index
-//	 */
-//	public BattleBot getBot(int botIndex) {
-//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-//			return bots[botIndex];
-//		}
-//		return null;
-//	}
-	
-	/**
-	 * Returns the number of BattleBots on the field
-	 * @return	The number of BattleBots on the field
-	 */
-	public int getNumberOfBots() {
-		return bots.length;
-	}
-	
-	/**
 	 * Returns a random int in the specified range
 	 * @param range  The range of numbers
 	 */
-	public int getRandomLocation(int range) {
+	private int getRandomLocation(int range) {
 		return rand.nextInt(range);
 	}
 
@@ -82,7 +37,16 @@ public class Container {
 		for (int i = 0; i < bots.length; i++) {
 			bots[i].move(timeUnits);
 		}
-
+	}
+	
+	/**
+	 * Places all the Bots in the container on the input Field
+	 * @param inField	The Field to add the Bots to
+	 */
+	public void placeBotsOnField(Field inField) {
+		for (BattleBot b : bots) {
+			inField.placeBot(b.getColumn(), b.getRow());
+		}
 	}
 	
 }
