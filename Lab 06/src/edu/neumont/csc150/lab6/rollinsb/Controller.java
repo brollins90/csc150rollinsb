@@ -25,17 +25,12 @@ public class Controller {
 		// Move Bots
 		bbContainer.moveBots(numberOfTimeUnits);
 		
-		// Check validity of bot locations
+		// Check place the bots on the field
 		for (int i = 0; i < bbContainer.getNumberOfBots(); i++) {
-			int botColumn = bbContainer.getBot(i).getColumn();
-			int botRow = bbContainer.getBot(i).getRow();
-			boolean validLocation =bbField.isLocationOnField(botColumn,botRow); 
-			//if (validLocation) {
-				bbField.placeBot(botColumn,  botRow);
-			//}
-			//System.out.println(validLocation);
+			int botColumn = bbContainer.getBotColumn(i);
+			int botRow = bbContainer.getBotRow(i);
+			bbField.placeBot(botColumn,  botRow);
 		}
-
 		System.out.println(bbField);
 		
 	}

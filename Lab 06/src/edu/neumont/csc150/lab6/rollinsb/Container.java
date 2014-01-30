@@ -8,7 +8,7 @@ public class Container {
 	private Random rand;
 	
 	/**
-	 * Creates a BattleBotContainer with the specified number of BattleBots.
+	 * Creates a Container with the specified number of BattleBots.
 	 * @param numberOfBots		The number of BattleBots to create
 	 * @param numberOfColumns	The number of columns on the field (to create the BattleBots in bounds)
 	 * @param numberOfRows		The number of rows on the field (to create the BattleBots in bounds)
@@ -23,16 +23,40 @@ public class Container {
 	}
 	
 	/**
-	 * Returns the BattleBot at the specified index
+	 * Returns the column number of the BattleBot at the specified index
 	 * @param botIndex	The index of the BattleBot
-	 * @return	The BattleBot at the specified index
+	 * @return	The BattleBot at the specified index's column
 	 */
-	public BattleBot getBot(int botIndex) {
+	public int getBotColumn(int botIndex) {
 		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-			return bots[botIndex];
+			return bots[botIndex].getColumn();
 		}
-		return null;
+		return 0;
 	}
+	
+	/**
+	 * Returns the row number of the BattleBot at the specified index
+	 * @param botIndex	The index of the BattleBot
+	 * @return	The BattleBot at the specified index's row
+	 */
+	public int getBotRow(int botIndex) {
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return bots[botIndex].getRow();
+		}
+		return 0;
+	}
+	
+//	/**
+//	 * Returns the BattleBot at the specified index
+//	 * @param botIndex	The index of the BattleBot
+//	 * @return	The BattleBot at the specified index
+//	 */
+//	public BattleBot getBot(int botIndex) {
+//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+//			return bots[botIndex];
+//		}
+//		return null;
+//	}
 	
 	/**
 	 * Returns the number of BattleBots on the field

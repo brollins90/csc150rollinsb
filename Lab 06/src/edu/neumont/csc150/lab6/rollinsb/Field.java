@@ -12,7 +12,7 @@ public class Field {
 	private String[][] field;
 
 	/**
-	 * Creates a BattleBotField of the specified dimensions.
+	 * Creates a Field of the specified dimensions.
 	 * 
 	 * @param numberOfRows  The number of rows for the field
 	 * @param numberOfColumns  The number of columns for the field
@@ -63,7 +63,7 @@ public class Field {
 	}
 		
 	/**
-	 * Set the location to the full value
+	 * Set the location to the occupied value
 	 */
 	public void placeBot(int column, int row) {
 		if (isLocationOnField(column, row)) {
