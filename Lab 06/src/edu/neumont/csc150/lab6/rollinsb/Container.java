@@ -22,6 +22,72 @@ public class Container {
 	}
 	
 	/**
+	 * Creates a Container with the one input Bot
+	 * @param newBot
+	 */
+	public Container(BattleBot newBot) {
+		rand = new Random();
+		bots = new BattleBot[1];
+		bots[0] = newBot;
+	}
+	
+	/**
+	 * Returns the column number of the BattleBot at the specified index
+	 * @param botIndex	The index of the BattleBot
+	 * @return	The BattleBot at the specified index's column
+	 */
+	public int getBotColumn(int botIndex) {
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return bots[botIndex].getColumn();
+		}
+		return 0;
+	}
+	
+	/**
+	 * Returns the column speed of the BattleBot at the specified index
+	 * @param botIndex	The index of the BattleBot
+	 * @return	The BattleBot at the specified index's column speed
+	 */
+	public int getBotColumnSpeed(int botIndex) {
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return bots[botIndex].getColumnSpeed();
+		}
+		return 0;
+	}
+	
+	/**
+	 * Returns the row number of the BattleBot at the specified index
+	 * @param botIndex	The index of the BattleBot
+	 * @return	The BattleBot at the specified index's row
+	 */
+	public int getBotRow(int botIndex) {
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return bots[botIndex].getRow();
+		}
+		return 0;
+	}
+	
+	/**
+	 * Returns the row speed of the BattleBot at the specified index
+	 * @param botIndex	The index of the BattleBot
+	 * @return	The BattleBot at the specified index's row speed
+	 */
+	public int getBotRowSpeed(int botIndex) {
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return bots[botIndex].getRowSpeed();
+		}
+		return 0;
+	}
+	
+	/**
+	 * Returns the number of Bots
+	 * @return
+	 */
+	public int getNumberOfBots() {
+		return this.bots.length;
+	}
+	
+	/**
 	 * Returns a random int in the specified range
 	 * @param range  The range of numbers
 	 */
