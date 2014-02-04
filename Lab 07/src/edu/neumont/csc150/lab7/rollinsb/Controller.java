@@ -18,34 +18,33 @@ public class Controller {
 		int numberOfBots = Integer.parseInt(args[3]);
 		
 		// Make a Frame
-		JFrame frame = new JFrame("Push Counter");
+		JFrame frame = new JFrame("Lab 07");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Make a Container
 		Container bbContainer = new Container(numberOfBots, numberOfCols, numberOfRows);
-		
-		// Make a FieldPanel
-		FieldPanel fPanel = new FieldPanel(numberOfCols, numberOfRows);
-		frame.add(fPanel);
 
 		// Make a Field 
 		Field bbField = new Field(numberOfCols, numberOfRows);
-		fPanel.setContainer(bbContainer);
 		
-		// Move Bots
+		// Make a FieldPanel
+		FieldPanel fPanel = new FieldPanel(numberOfCols, numberOfRows);
+		fPanel.setContainer(bbContainer);
+		frame.add(fPanel);
+		
+		// Add the Fields to the container
+		bbContainer.addField(bbField);
+		bbContainer.addFieldPanel(fPanel);
+		
+		// Move Bots the number of times specified as arguments
 		bbContainer.moveBots(numberOfTimeUnits);
 		
 		// Give the Field to the container to add the Bots
-		bbContainer.placeBots(bbField, fPanel);
-		bbContainer.printFields(bbField, fPanel);
+		bbContainer.printFields();
 		
 		// Ready the frame
 		frame.pack();
 		frame.setVisible(true);
-		
-		// Print the Field
-		fPanel.updateFieldPanel();
-		System.out.println(bbField);
 		
 	}
 }

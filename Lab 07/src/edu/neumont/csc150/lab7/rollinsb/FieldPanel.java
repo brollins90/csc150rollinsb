@@ -9,8 +9,9 @@ public class FieldPanel extends JPanel {
 
 	private static final long serialVersionUID = 3754185169806893540L;	
 	private String[][] field;
+	private JPanel topPanel, bottomPanel;
 	private JTextArea fieldLabel;
-	private JButton forwardButton;
+	private JButton forwardButton,reverseButton;
 	private Container botContainer;
 	
 	public FieldPanel(int numberOfColumns, int numberOfRows) {
@@ -21,11 +22,22 @@ public class FieldPanel extends JPanel {
 		// Initialize the [][] to all "empty" values
 		clearField();
 		
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		topPanel = new JPanel();
+		reverseButton = new JButton("-1 time");
+		reverseButton.addActionListener(new ButtonListener());
+		topPanel.add(reverseButton);
+		
 		forwardButton = new JButton("+1 time");
 		forwardButton.addActionListener(new ButtonListener());
+		topPanel.add(forwardButton);
 		
+		this.add(topPanel);
+		
+		bottomPanel = new JPanel();
 		fieldLabel = new JTextArea(getFieldAsString());
-		this.add(fieldLabel);
+		bottomPanel.add(fieldLabel);
+		this.add(bottomPanel);
 	}
 	
 	/**
@@ -95,14 +107,21 @@ public class FieldPanel extends JPanel {
 	}
 	
 	private class ButtonListener implements ActionListener {
-		
-		public ButtonListener() {
-			
-		}
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			botContainer.moveBots(1);			
+			System.out.println("Button Clicked!");
+			int timeToMove = 0;
+			if (arg0.getSource() == forwardButton) {
+				System.out.println("Forward");
+				timeToMove = 1;
+			} else if (arg0.getSource() == reverseButton) {
+				System.out.println("Reverse");
+				timeToMove = -1;
+			}
+			botContainer.moveBots(timeToMove);
+			botContainer.placeBots();
+			botContainer.printFields();
 		}
 	}
 

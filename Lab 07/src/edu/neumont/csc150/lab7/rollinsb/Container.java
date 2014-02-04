@@ -6,6 +6,8 @@ public class Container {
 
 	private Robot[] bots;
 	private Random rand;
+	private Field botField;
+	private FieldPanel botFieldPanel;
 	
 	/**
 	 * Creates a Container with the specified number of BattleBots.
@@ -104,18 +106,38 @@ public class Container {
 			bots[i].move(timeUnits);
 		}
 	}
+	
+	private void clearFields() {
+		this.botFieldPanel.clearField();
+		this.botField.clearField();
+	}
 
 	
-	public void placeBots(Field inField, FieldPanel fPanel) {
+	public void placeBots() {
 		for (Robot b : bots) {
-			inField.placeBot(b.getColumn(), b.getRow());
-			fPanel.placeBot(b.getColumn(), b.getRow());
+			this.botFieldPanel.placeBot(b.getColumn(), b.getRow());
+			this.botField.placeBot(b.getColumn(), b.getRow());
 		}
 	}
 
-	public void printFields(Field bbField, FieldPanel fPanel) {
-		fPanel.updateFieldPanel();
-		System.out.println(bbField);
+	public void printFields() {
+		// Clear the Fields
+		clearFields();
+		
+		// Place the Robots
+		placeBots();
+		
+		// Print the Fields
+		this.botFieldPanel.updateFieldPanel();
+		System.out.println(this.botField);
+	}
+
+	public void addField(Field bbField) {
+		this.botField = bbField;		
+	}
+
+	public void addFieldPanel(FieldPanel fPanel) {
+		this.botFieldPanel = fPanel;
 	}
 	
 }
