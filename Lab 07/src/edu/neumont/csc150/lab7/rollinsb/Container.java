@@ -104,15 +104,18 @@ public class Container {
 			bots[i].move(timeUnits);
 		}
 	}
+
 	
-	/**
-	 * Places all the Bots in the container on the input Field
-	 * @param inField	The Field to add the Bots to
-	 */
-	public void placeBotsOnField(Field inField) {
+	public void placeBots(Field inField, FieldPanel fPanel) {
 		for (Robot b : bots) {
 			inField.placeBot(b.getColumn(), b.getRow());
+			fPanel.placeBot(b.getColumn(), b.getRow());
 		}
+	}
+
+	public void printFields(Field bbField, FieldPanel fPanel) {
+		fPanel.updateFieldPanel();
+		System.out.println(bbField);
 	}
 	
 }
