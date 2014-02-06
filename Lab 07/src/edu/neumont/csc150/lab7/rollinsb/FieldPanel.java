@@ -59,6 +59,10 @@ public class FieldPanel extends JPanel {
 		this.add(botPanel);
 	}
 
+	/**
+	 * Adds the TimeListener from the parent class so it know what to notify when a button is clicked
+	 * @param tListener	The container's time listener
+	 */
 	public void addTimeListener(ActionListener tListener) {
 		this.timeListener = tListener;
 	}

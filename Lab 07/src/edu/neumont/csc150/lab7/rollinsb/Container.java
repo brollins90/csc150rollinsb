@@ -162,7 +162,7 @@ public class Container {
 	}
 	
 	/**
-	 * The Button Listener for the application
+	 * The TimeListener is called by the container when a time button has been clicked
 	 * @author Blake
 	 *
 	 */
