@@ -30,7 +30,7 @@ public class Controller {
 		
 		// Make a FieldPanel
 		FieldPanel fPanel = new FieldPanel(numberOfCols, numberOfRows);
-		fPanel.setContainer(bbContainer);
+		//fPanel.setContainer(bbContainer);
 		frame.add(fPanel);
 		
 		// Add the Fields to the container

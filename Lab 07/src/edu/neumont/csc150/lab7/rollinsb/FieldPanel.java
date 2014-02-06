@@ -17,8 +17,8 @@ public class FieldPanel extends JPanel {
 	private JLabel[][] field;
 	private JPanel topPanel, leftPanel, rightPanel, bottomPanel, botPanel;
 	private JButton forwardButton,reverseButton;
-	private Container botContainer;
 	private Random rand;
+	private ActionListener timeListener;
 	
 	public FieldPanel(int numberOfColumns, int numberOfRows) {
 		
@@ -58,20 +58,9 @@ public class FieldPanel extends JPanel {
 		initializeField();
 		this.add(botPanel);
 	}
-	
-	/**
-	 * Initializes the JLabel[][]
-	 * Should only be called once.
-	 */
-	private void initializeField() {
-		for (int i = 0; i < getNumberOfColumns(); i++) {
-			for (int j = 0; j < getNumberOfRows(); j++) {
-				// Sets every spot to empty and then adds the spot to the output
-				field[i][j] = new JLabel("-");
-				field[i][j].setForeground(new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
-				botPanel.add(field[i][j]);
-			}
-		}
+
+	public void addTimeListener(ActionListener tListener) {
+		this.timeListener = tListener;
 	}
 
 	/**
@@ -100,6 +89,21 @@ public class FieldPanel extends JPanel {
 	public int getNumberOfRows() {
 		return field[0].length;
 	}
+	
+	/**
+	 * Initializes the JLabel[][]
+	 * Should only be called once.
+	 */
+	private void initializeField() {
+		for (int i = 0; i < getNumberOfColumns(); i++) {
+			for (int j = 0; j < getNumberOfRows(); j++) {
+				// Sets every spot to empty and then adds the spot to the output
+				field[i][j] = new JLabel("-");
+				field[i][j].setForeground(new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+				botPanel.add(field[i][j]);
+			}
+		}
+	}
 		
 	/**
 	 * Checks if the specified location is on the field
@@ -121,15 +125,7 @@ public class FieldPanel extends JPanel {
 	}
 	
 	/**
-	 * Tells the Panel what the parent Container is, so that it can respond to events
-	 * @param bbContainer	The parent Container
-	 */
-	public void setContainer(Container bbContainer) {
-		botContainer = bbContainer;		
-	}
-	
-	/**
-	 * The Button Listener for the application
+	 * The ButtonListener listens for the button click in the panel
 	 * @author Blake
 	 *
 	 */
@@ -138,17 +134,16 @@ public class FieldPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			System.out.println("Button Clicked!");
-			int timeToMove = 0;
-			if (arg0.getSource() == forwardButton) {
-				System.out.println("Forward");
-				timeToMove = 1;
-			} else if (arg0.getSource() == reverseButton) {
-				System.out.println("Reverse");
-				timeToMove = -1;
+			
+			JButton source = (JButton) arg0.getSource();
+			String command = "";
+			
+			if (source == forwardButton) {
+				command = "forward";
+			} else if (source == reverseButton) {
+				command = "reverse";
 			}
-			botContainer.moveBots(timeToMove);
-			botContainer.placeBots();
-			botContainer.printFields();
+			timeListener.actionPerformed(new ActionEvent(source, 7, command));
 		}
 	}
 

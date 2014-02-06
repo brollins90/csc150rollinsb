@@ -1,5 +1,7 @@
 package edu.neumont.csc150.lab7.rollinsb;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 public class Container {
@@ -8,6 +10,7 @@ public class Container {
 	private Random rand;
 	private Field botField;
 	private FieldPanel botFieldPanel;
+	private TimeListener tListener;
 	
 	/**
 	 * Creates a Container with the specified number of BattleBots.
@@ -47,6 +50,8 @@ public class Container {
 	 */
 	public void addFieldPanel(FieldPanel fPanel) {
 		this.botFieldPanel = fPanel;
+		this.tListener = new TimeListener();
+		this.botFieldPanel.addTimeListener(this.tListener);
 	}
 	
 	/**
@@ -154,6 +159,32 @@ public class Container {
 		// Print the Fields
 		//this.botFieldPanel.updateFieldPanel(); // Dont need to update anymore since it does it automatically
 		System.out.println(this.botField);
+	}
+	
+	/**
+	 * The Button Listener for the application
+	 * @author Blake
+	 *
+	 */
+	private class TimeListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			String command = arg0.getActionCommand();
+			System.out.println("Container recieved the click: " + command);
+			
+			int timeToMove = 0;
+			if (command.equals("forward")) {
+				timeToMove = 1;
+			} else if (command.equals("reverse")) {
+				timeToMove = -1;
+			} else {
+				System.out.println("an invalid button click has been recieved: " + arg0.getSource());
+			}
+			moveBots(timeToMove);
+			placeBots();
+			printFields();
+		}
 	}
 	
 }
