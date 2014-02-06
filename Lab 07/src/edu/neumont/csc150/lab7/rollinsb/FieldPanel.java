@@ -1,66 +1,88 @@
 package edu.neumont.csc150.lab7.rollinsb;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class FieldPanel extends JPanel {
 
 	private static final long serialVersionUID = 3754185169806893540L;	
-	private String[][] field;
-	private JPanel topPanel, bottomPanel;
-	private JTextArea fieldLabel;
+	private JLabel[][] field;
+	private JPanel topPanel, leftPanel, rightPanel, bottomPanel, botPanel;
 	private JButton forwardButton,reverseButton;
 	private Container botContainer;
+	private Random rand;
 	
 	public FieldPanel(int numberOfColumns, int numberOfRows) {
 		
+		rand = new Random();
 		// Create a new [][]
-		field = new String[numberOfColumns][numberOfRows];
+		field = new JLabel[numberOfColumns][numberOfRows];
 		
-		// Initialize the [][] to all "empty" values
-		clearField();
+		this.setLayout(new BorderLayout());
 		
-		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		topPanel = new JPanel();
+		// Top Panel
+		topPanel = new JPanel();	
+		this.add(topPanel, BorderLayout.NORTH);
+		
+		// Left Panel
+		leftPanel = new JPanel();
+		this.add(leftPanel, BorderLayout.WEST);
+		
+		// Right Panel
+		rightPanel = new JPanel();
+		this.add(rightPanel, BorderLayout.EAST);
+		
+		// Bottom Panel
+		bottomPanel = new JPanel();
 		reverseButton = new JButton("-1 time");
 		reverseButton.addActionListener(new ButtonListener());
-		topPanel.add(reverseButton);
+		bottomPanel.add(reverseButton);
 		
 		forwardButton = new JButton("+1 time");
 		forwardButton.addActionListener(new ButtonListener());
-		topPanel.add(forwardButton);
+		bottomPanel.add(forwardButton);	
+		this.add(bottomPanel, BorderLayout.SOUTH);
 		
-		this.add(topPanel);
-		
-		bottomPanel = new JPanel();
-		fieldLabel = new JTextArea(getFieldAsString());
-		bottomPanel.add(fieldLabel);
-		this.add(bottomPanel);
+		// Bot Panel
+		botPanel = new JPanel();
+		botPanel.setLayout(new GridLayout(numberOfRows,numberOfColumns));
+		// add the field and initialize it
+		initializeField();
+		this.add(botPanel);
 	}
 	
+	/**
+	 * Initializes the JLabel[][]
+	 * Should only be called once.
+	 */
+	private void initializeField() {
+		for (int i = 0; i < getNumberOfColumns(); i++) {
+			for (int j = 0; j < getNumberOfRows(); j++) {
+				// Sets every spot to empty and then adds the spot to the output
+				field[i][j] = new JLabel("-");
+				field[i][j].setForeground(new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+				botPanel.add(field[i][j]);
+			}
+		}
+	}
+
 	/**
 	 * Sets all locations of the field array to the empty value.
 	 */
 	public void clearField() {
-		for (int i = 0; i < getNumberOfColumns(); i++) {
-			for (int j = 0; j < getNumberOfRows(); j++) {
-				field[i][j] = "-";
+		for (JLabel[] c : field) {
+			for (JLabel r : c) {
+				r.setText("-");
 			}
 		}
-	}
-	
-	public String getFieldAsString(){
-		String outString = "";
-		
-		for (int rowIndex = 0; rowIndex < getNumberOfRows(); rowIndex++) {
-			for (int columnIndex = 0; columnIndex < getNumberOfColumns(); columnIndex++) {
-				outString += field[columnIndex][rowIndex];
-			}
-			outString += "\n";
-		}		
-		return outString;
 	}
 		
 	/**
@@ -94,18 +116,23 @@ public class FieldPanel extends JPanel {
 	 */
 	public void placeBot(int column, int row) {
 		if (isLocationOnField(column, row)) {
-			field[column][row] = "X";
+			field[column][row].setText("X");
 		}
 	}
 	
-	public void updateFieldPanel() {
-		fieldLabel.setText(getFieldAsString());
-	}
-
+	/**
+	 * Tells the Panel what the parent Container is, so that it can respond to events
+	 * @param bbContainer	The parent Container
+	 */
 	public void setContainer(Container bbContainer) {
 		botContainer = bbContainer;		
 	}
 	
+	/**
+	 * The Button Listener for the application
+	 * @author Blake
+	 *
+	 */
 	private class ButtonListener implements ActionListener {
 
 		@Override

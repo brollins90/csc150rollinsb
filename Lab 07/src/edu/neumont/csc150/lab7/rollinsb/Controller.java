@@ -10,7 +10,7 @@ public class Controller {
 		args[0] = "20";  // columns
 		args[1] = "20"; // rows
 		args[2] = "0";	// time
-		args[3] = "20";	// bots
+		args[3] = "40";	// bots
 		
 		int numberOfCols = Integer.parseInt(args[0]);
 		int numberOfRows = Integer.parseInt(args[1]);
@@ -20,6 +20,7 @@ public class Controller {
 		// Make a Frame
 		JFrame frame = new JFrame("Lab 07");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
 
 		// Make a Container
 		Container bbContainer = new Container(numberOfBots, numberOfCols, numberOfRows);

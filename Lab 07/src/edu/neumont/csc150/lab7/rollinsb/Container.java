@@ -34,6 +34,22 @@ public class Container {
 	}
 	
 	/**
+	 * Sets the Field for the Container to use
+	 * @param bbField	The Field for the Container
+	 */
+	public void addField(Field bbField) {
+		this.botField = bbField;		
+	}
+
+	/**
+	 * Sets the FieldPanel for the Container to use.
+	 * @param fPanel	The FieldPanel for the container
+	 */
+	public void addFieldPanel(FieldPanel fPanel) {
+		this.botFieldPanel = fPanel;
+	}
+	
+	/**
 	 * Returns the column number of the BattleBot at the specified index
 	 * @param botIndex	The index of the BattleBot
 	 * @return	The BattleBot at the specified index's column
@@ -107,12 +123,17 @@ public class Container {
 		}
 	}
 	
+	/**
+	 * Calls the clearField() method for both the fields
+	 */
 	private void clearFields() {
 		this.botFieldPanel.clearField();
 		this.botField.clearField();
 	}
 
-	
+	/**
+	 * Places all the Robots on both fields
+	 */
 	public void placeBots() {
 		for (Robot b : bots) {
 			this.botFieldPanel.placeBot(b.getColumn(), b.getRow());
@@ -120,6 +141,9 @@ public class Container {
 		}
 	}
 
+	/**
+	 * Prints the Fields with the current Robots
+	 */
 	public void printFields() {
 		// Clear the Fields
 		clearFields();
@@ -128,16 +152,8 @@ public class Container {
 		placeBots();
 		
 		// Print the Fields
-		this.botFieldPanel.updateFieldPanel();
+		//this.botFieldPanel.updateFieldPanel(); // Dont need to update anymore since it does it automatically
 		System.out.println(this.botField);
-	}
-
-	public void addField(Field bbField) {
-		this.botField = bbField;		
-	}
-
-	public void addFieldPanel(FieldPanel fPanel) {
-		this.botFieldPanel = fPanel;
 	}
 	
 }
