@@ -1,7 +1,5 @@
 package edu.neumont.csc150.lab8.rollinsb;
 
-import javax.swing.JFrame;
-
 /**
  * The Controller drives the BattleBot project.  
  * Currently it creates the Container, Field and FieldPanel and starts the program
@@ -9,12 +7,6 @@ import javax.swing.JFrame;
  *
  */
 public class Controller {
-
-	private Container container;
-	
-	public Controller(Container bbContainer) {
-		this.container = bbContainer;
-	}
 
 	/**
 	 * main takes 4 args to run.
@@ -41,55 +33,23 @@ public class Controller {
 			// Make a Container
 			Container bbContainer = new Container(numberOfBots, numberOfCols, numberOfRows);
 			
-			// Create a new Controller and add the Container
-			Controller c = new Controller(bbContainer);
-			
 			// If we need a Console Field
 			if (typeOfField == 0 || typeOfField == 2) {
 				// Make a Console Field and add it to the Container
-				Console bbField = new Console(numberOfCols, numberOfRows);
-				c.container.addField(bbField);
-				
-				// If there is only a console field, then print it, else wait
-				if (typeOfField == 0) {
-					c.moveAndPrint(numberOfTimeUnits);
-				}
+				bbContainer.addField(new Console(numberOfCols, numberOfRows));
 			}
 			
 			// If we need a GUI Field
 			if (typeOfField == 1 || typeOfField == 2) {
-				// Make a Frame
-				JFrame frame = new JFrame("BattleBots");
-				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.setLocationRelativeTo(null);
-
-				// Make a FieldPanel
-				GUI fPanel = new GUI(numberOfCols, numberOfRows);
-				//fPanel.setContainer(bbContainer);
-				frame.add(fPanel);
-				
-				// Add the GUI Field to the container
-				c.container.addField(fPanel);
-				
-				// Always move because this is last.
-				c.moveAndPrint(numberOfTimeUnits);
-				
-				// Ready the frame
-				frame.pack();
-				frame.setVisible(true);
+				bbContainer.addField(new GUI(numberOfCols, numberOfRows));
 			}
+			
+			// Move the bots and update the Fields
+			bbContainer.moveBots(numberOfTimeUnits);
+			bbContainer.printFields();
 						
 		} else {
 			System.out.println("Invalid arguments.");
 		}
-	}
-	
-	private void moveAndPrint(int numberOfTimeUnits) {
-
-		// Move Bots the number of times specified as arguments
-		this.container.moveBots(numberOfTimeUnits);
-		
-		// Give the Field to the container to add the Bots
-		this.container.printFields();
 	}
 }

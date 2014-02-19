@@ -2,12 +2,14 @@ package edu.neumont.csc150.lab8.rollinsb;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -21,6 +23,11 @@ public class GUI extends JPanel implements Field {
 	private ActionListener timeListener;
 	
 	public GUI(int numberOfColumns, int numberOfRows) {
+		
+		JFrame frame = new JFrame("BattleBots");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		frame.setPreferredSize(new Dimension(200,400));
 		
 		rand = new Random();
 		// Create a new [][]
@@ -57,6 +64,16 @@ public class GUI extends JPanel implements Field {
 		// add the field and initialize it
 		initializeField();
 		this.add(botPanel);
+		
+		frame.add(this);
+		
+		//clearField();
+		
+		
+		// Ready the frame
+		frame.pack();
+		frame.setVisible(true);
+		
 	}
 
 	/**
