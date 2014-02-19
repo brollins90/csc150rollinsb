@@ -63,6 +63,7 @@ public class GUI extends JPanel implements Field {
 	 * Adds the TimeListener from the parent class so it know what to notify when a button is clicked
 	 * @param tListener	The container's time listener
 	 */
+	@Override
 	public void addTimeListener(ActionListener tListener) {
 		this.timeListener = tListener;
 	}
@@ -70,6 +71,7 @@ public class GUI extends JPanel implements Field {
 	/**
 	 * Sets all locations of the field array to the empty value.
 	 */
+	@Override
 	public void clearField() {
 		for (JLabel[] c : field) {
 			for (JLabel r : c) {
@@ -82,6 +84,7 @@ public class GUI extends JPanel implements Field {
 	 * Returns the number of columns on the field
 	 * @return	The number of columns on the field
 	 */
+	@Override
 	public int getNumberOfColumns() {
 		return field.length;
 	}
@@ -90,6 +93,7 @@ public class GUI extends JPanel implements Field {
 	 * Returns the number of rows on the field
 	 * @return	The number of rows on the field
 	 */
+	@Override
 	public int getNumberOfRows() {
 		return field[0].length;
 	}
@@ -115,6 +119,7 @@ public class GUI extends JPanel implements Field {
 	 * @param testRow
 	 * @return
 	 */
+	@Override
 	public boolean isLocationOnField(int testColumn, int testRow) {
 		return (testColumn >=0 && testColumn < getNumberOfColumns() && testRow >=0 && testRow < getNumberOfRows());
 	}
@@ -122,6 +127,7 @@ public class GUI extends JPanel implements Field {
 	/**
 	 * Set the location to the occupied value
 	 */
+	@Override
 	public void placeBot(int column, int row) {
 		if (isLocationOnField(column, row)) {
 			field[column][row].setText("X");
