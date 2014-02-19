@@ -9,8 +9,6 @@ public class Container {
 	private Robot[] bots;
 	private Random rand;
 	private Field[] fields;
-	//private Console botField;
-	//private GUI botFieldPanel;
 	private TimeListener tListener;
 	
 	/**
@@ -54,16 +52,6 @@ public class Container {
 		newArray[newArray.length - 1] = newField;
 		this.fields = newArray;
 	}
-//
-//	/**
-//	 * Sets the FieldPanel for the Container to use.
-//	 * @param fPanel	The FieldPanel for the container
-//	 */
-//	public void addFieldPanel(GUI fPanel) {
-//		this.botFieldPanel = fPanel;
-//		this.tListener = new TimeListener();
-//		this.botFieldPanel.addTimeListener(this.tListener);
-//	}
 	
 	/**
 	 * Returns the column number of the BattleBot at the specified index
