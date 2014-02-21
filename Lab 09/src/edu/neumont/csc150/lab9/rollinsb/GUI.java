@@ -125,7 +125,7 @@ public class GUI extends JPanel implements Field {
 			for (int columnIndex = 0; columnIndex < getNumberOfColumns(); columnIndex++) {
 				// Sets every spot to empty and then adds the spot to the output
 				field[columnIndex][rowIndex] = new JLabel("-");
-				//field[columnIndex][rowIndex].setForeground(new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+				field[columnIndex][rowIndex].setForeground(new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
 				botPanel.add(field[columnIndex][rowIndex]);
 			}
 		}
@@ -176,10 +176,12 @@ public class GUI extends JPanel implements Field {
 		}
 	}
 
+	/**
+	 * Does nothing, the GUI version of the field does not require a reprint
+	 */
 	@Override
 	public void printField() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 }

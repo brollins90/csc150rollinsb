@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.util.Random;
 
 /**
- * The BattleBot object contains all the information related to a BattleBot * 
+ * The BattleBot object contains all the information related to a BattleBot
  * @author Blake Rollins 
  */
 public abstract class Robot {
@@ -14,9 +14,8 @@ public abstract class Robot {
 	protected Random rand;
 
 	/**
-	 * The BattleBot needs a starting row and column and will set a random speed
-	 * @param columnIn
-	 * @param rowIn
+	 * Creates a Robot at the input location with a random speed
+	 * @param robotLocation The location of the robot
 	 */
 	public Robot(Point robotLocation) {
 		rand = new Random();
@@ -25,12 +24,9 @@ public abstract class Robot {
 	}
 
 	/**
-	 * The BattleBot needs a starting row and column and movement speed
-	 * 
-	 * @param columnIn
-	 * @param rowIn
-	 * @param columnSpeedIn
-	 * @param rowSpeedIn
+	 * Creates a Robot at the input location with the input speed
+	 * @param robotLocation The location of the robot
+	 * @param robotSpeed The speed of the robot
 	 */
 	public Robot(Point robotLocation, Point robotSpeed) {
 		rand = new Random();
@@ -79,11 +75,14 @@ public abstract class Robot {
 	}
 	
 	/**
-	 * Moves the BattleBot the specified number of time units
+	 * Moves the Robot the specified number of time units
 	 * @param additionalTimeUnits
 	 */
 	public abstract void move(int timeUnits);
-	
+
+	/**
+	 * Returns a String representation of the Robot
+	 */
 	public abstract String getConsoleDisplay();
 
 }

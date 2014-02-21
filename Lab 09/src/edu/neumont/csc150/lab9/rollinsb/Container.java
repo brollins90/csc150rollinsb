@@ -118,8 +118,7 @@ public class Container {
 	}
 
 	/**
-	 * Updates the location of each Robot on the field by calling the move
-	 * method of each Robot.
+	 * Updates the location of each Robot on the field by calling the move method of each Robot.
 	 */
 	public void moveBots(int timeUnits) {
 		for (Robot r : this.botList) {

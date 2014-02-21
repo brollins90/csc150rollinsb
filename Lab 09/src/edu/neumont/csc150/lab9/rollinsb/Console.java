@@ -17,10 +17,8 @@ public class Console implements Field {
 	/**
 	 * Creates a Console Field of the specified dimensions.
 	 * 
-	 * @param numberOfRows
-	 *            The number of rows for the field
-	 * @param numberOfColumns
-	 *            The number of columns for the field
+	 * @param numberOfRows The number of rows for the field
+	 * @param numberOfColumns The number of columns for the field
 	 */
 	public Console(int numberOfColumns, int numberOfRows) {
 
@@ -77,7 +75,7 @@ public class Console implements Field {
 	}
 
 	/**
-	 * Set the location to the occupied value
+	 * Set the updates the location to the inputed String
 	 */
 	@Override
 	public void placeBot(Point robotLocation, String robotString) {
@@ -85,19 +83,25 @@ public class Console implements Field {
 			fieldArray[robotLocation.x][robotLocation.y] = robotString;
 		}
 	}
-
+	
+	/**
+	 * Prints the Field to the Console
+	 */
 	@Override
 	public void printField() {
 		System.out.println(toString());
 	}
 
+	/**
+	 * Adds a listener to inform the Container of a move request
+	 */
 	@Override
 	public void addTimeListener(ActionListener tListener) {
 		// TODO: Not yet implemented
 	}
 
 	/**
-	 * returns the BattleBotField as a String
+	 * returns the Field as a String
 	 */
 	public String toString() {
 		String outString = "";
