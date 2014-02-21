@@ -52,54 +52,54 @@ public class Container {
 		
 		this.fieldList.add(newField);
 	}
-//	
-//	/**
-//	 * Returns the column number of the Robot at the specified index
-//	 * @param botIndex	The index of the Robot
-//	 * @return	The Robot at the specified index's column
-//	 */
-//	public int getBotColumn(int botIndex) {
-//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-//			return this.botList.get(botIndex).getColumn();
-//		}
-//		return 0;
-//	}
-//	
-//	/**
-//	 * Returns the column speed of the Robot at the specified index
-//	 * @param botIndex	The index of the Robot
-//	 * @return	The Robot at the specified index's column speed
-//	 */
-//	public int getBotColumnSpeed(int botIndex) {
-//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-//			return this.botList.get(botIndex).getColumnSpeed();
-//		}
-//		return 0;
-//	}
-//	
-//	/**
-//	 * Returns the row number of the Robot at the specified index
-//	 * @param botIndex	The index of the Robot
-//	 * @return	The Robot at the specified index's row
-//	 */
-//	public int getBotRow(int botIndex) {
-//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-//			return this.botList.get(botIndex).getRow();
-//		}
-//		return 0;
-//	}
-//	
-//	/**
-//	 * Returns the row speed of the Robot at the specified index
-//	 * @param botIndex	The index of the Robot
-//	 * @return	The Robot at the specified index's row speed
-//	 */
-//	public int getBotRowSpeed(int botIndex) {
-//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-//			return this.botList.get(botIndex).getRowSpeed();
-//		}
-//		return 0;
-//	}
+	
+	/**
+	 * Returns the column number of the Robot at the specified index
+	 * @param botIndex	The index of the Robot
+	 * @return	The Robot at the specified index's column
+	 */
+	public int getBotColumn(int botIndex) {
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return this.botList.get(botIndex).getColumn();
+		}
+		return 0;
+	}
+	
+	/**
+	 * Returns the column speed of the Robot at the specified index
+	 * @param botIndex	The index of the Robot
+	 * @return	The Robot at the specified index's column speed
+	 */
+	public int getBotColumnSpeed(int botIndex) {
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return this.botList.get(botIndex).getColumnSpeed();
+		}
+		return 0;
+	}
+	
+	/**
+	 * Returns the row number of the Robot at the specified index
+	 * @param botIndex	The index of the Robot
+	 * @return	The Robot at the specified index's row
+	 */
+	public int getBotRow(int botIndex) {
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return this.botList.get(botIndex).getRow();
+		}
+		return 0;
+	}
+	
+	/**
+	 * Returns the row speed of the Robot at the specified index
+	 * @param botIndex	The index of the Robot
+	 * @return	The Robot at the specified index's row speed
+	 */
+	public int getBotRowSpeed(int botIndex) {
+		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+			return this.botList.get(botIndex).getRowSpeed();
+		}
+		return 0;
+	}
 	
 	/**
 	 * Returns the number of Robots
