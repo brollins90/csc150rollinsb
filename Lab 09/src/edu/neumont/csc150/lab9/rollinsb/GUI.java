@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
@@ -124,7 +125,7 @@ public class GUI extends JPanel implements Field {
 			for (int columnIndex = 0; columnIndex < getNumberOfColumns(); columnIndex++) {
 				// Sets every spot to empty and then adds the spot to the output
 				field[columnIndex][rowIndex] = new JLabel("-");
-				field[columnIndex][rowIndex].setForeground(new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
+				//field[columnIndex][rowIndex].setForeground(new Color(rand.nextInt(256),rand.nextInt(256),rand.nextInt(256)));
 				botPanel.add(field[columnIndex][rowIndex]);
 			}
 		}
@@ -137,17 +138,18 @@ public class GUI extends JPanel implements Field {
 	 * @return
 	 */
 	@Override
-	public boolean isLocationOnField(int testColumn, int testRow) {
-		return (testColumn >=0 && testColumn < getNumberOfColumns() && testRow >=0 && testRow < getNumberOfRows());
+	public boolean isLocationOnField(Point testLocation) {
+		return (testLocation.x >= 0 && testLocation.x < getNumberOfColumns()
+				&& testLocation.y >= 0 && testLocation.y < getNumberOfRows());
 	}
 		
 	/**
 	 * Set the location to the occupied value
 	 */
 	@Override
-	public void placeBot(int column, int row) {
-		if (isLocationOnField(column, row)) {
-			field[column][row].setText("X");
+	public void placeBot(Point robotLocation, String robotString) {
+		if (isLocationOnField(robotLocation)) {
+			field[robotLocation.x][robotLocation.y].setText(robotString);
 		}
 	}
 	

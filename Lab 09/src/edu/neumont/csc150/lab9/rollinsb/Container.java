@@ -1,5 +1,6 @@
 package edu.neumont.csc150.lab9.rollinsb;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ public class Container {
 	private ArrayList<Robot> botList;
 	private ArrayList<Field> fieldList;
 	private Random rand;
-	//private Field[] fields;
 	private TimeListener tListener;
 	
 	/**
@@ -27,7 +27,7 @@ public class Container {
 		
 		// Create the random Robots
 		for (int i = 0; i < numberOfBots; i++) {
-			botList.add(new Robot(getRandomLocation(numberOfColumns), getRandomLocation(numberOfRows)));
+			botList.add(RobotFactory.createRobot(new Point(getRandomLocation(numberOfColumns), getRandomLocation(numberOfRows))));
 		}
 	}
 	
@@ -52,54 +52,54 @@ public class Container {
 		
 		this.fieldList.add(newField);
 	}
-	
-	/**
-	 * Returns the column number of the Robot at the specified index
-	 * @param botIndex	The index of the Robot
-	 * @return	The Robot at the specified index's column
-	 */
-	public int getBotColumn(int botIndex) {
-		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-			return this.botList.get(botIndex).getColumn();
-		}
-		return 0;
-	}
-	
-	/**
-	 * Returns the column speed of the Robot at the specified index
-	 * @param botIndex	The index of the Robot
-	 * @return	The Robot at the specified index's column speed
-	 */
-	public int getBotColumnSpeed(int botIndex) {
-		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-			return this.botList.get(botIndex).getColumnSpeed();
-		}
-		return 0;
-	}
-	
-	/**
-	 * Returns the row number of the Robot at the specified index
-	 * @param botIndex	The index of the Robot
-	 * @return	The Robot at the specified index's row
-	 */
-	public int getBotRow(int botIndex) {
-		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-			return this.botList.get(botIndex).getRow();
-		}
-		return 0;
-	}
-	
-	/**
-	 * Returns the row speed of the Robot at the specified index
-	 * @param botIndex	The index of the Robot
-	 * @return	The Robot at the specified index's row speed
-	 */
-	public int getBotRowSpeed(int botIndex) {
-		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
-			return this.botList.get(botIndex).getRowSpeed();
-		}
-		return 0;
-	}
+//	
+//	/**
+//	 * Returns the column number of the Robot at the specified index
+//	 * @param botIndex	The index of the Robot
+//	 * @return	The Robot at the specified index's column
+//	 */
+//	public int getBotColumn(int botIndex) {
+//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+//			return this.botList.get(botIndex).getColumn();
+//		}
+//		return 0;
+//	}
+//	
+//	/**
+//	 * Returns the column speed of the Robot at the specified index
+//	 * @param botIndex	The index of the Robot
+//	 * @return	The Robot at the specified index's column speed
+//	 */
+//	public int getBotColumnSpeed(int botIndex) {
+//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+//			return this.botList.get(botIndex).getColumnSpeed();
+//		}
+//		return 0;
+//	}
+//	
+//	/**
+//	 * Returns the row number of the Robot at the specified index
+//	 * @param botIndex	The index of the Robot
+//	 * @return	The Robot at the specified index's row
+//	 */
+//	public int getBotRow(int botIndex) {
+//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+//			return this.botList.get(botIndex).getRow();
+//		}
+//		return 0;
+//	}
+//	
+//	/**
+//	 * Returns the row speed of the Robot at the specified index
+//	 * @param botIndex	The index of the Robot
+//	 * @return	The Robot at the specified index's row speed
+//	 */
+//	public int getBotRowSpeed(int botIndex) {
+//		if (botIndex >= 0 && botIndex < getNumberOfBots()) {
+//			return this.botList.get(botIndex).getRowSpeed();
+//		}
+//		return 0;
+//	}
 	
 	/**
 	 * Returns the number of Robots
@@ -122,8 +122,8 @@ public class Container {
 	 * method of each Robot.
 	 */
 	public void moveBots(int timeUnits) {
-		for (int i = 0; i < botList.size(); i++) {
-			this.botList.get(i).move(timeUnits);
+		for (Robot r : this.botList) {
+			r.move(timeUnits);
 		}
 	}
 	
@@ -140,9 +140,9 @@ public class Container {
 	 * Places all the Robots on all the fields
 	 */
 	public void placeBots() {
-		for (Robot b : this.botList) {
+		for (Robot r : this.botList) {
 			for (Field f : this.fieldList) {
-				f.placeBot(b.getColumn(), b.getRow());
+				f.placeBot(new Point(r.getColumn(), r.getRow()), r.getConsoleDisplay());
 			}
 		}
 	}

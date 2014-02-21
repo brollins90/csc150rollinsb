@@ -1,5 +1,6 @@
 package edu.neumont.csc150.lab9.rollinsb;
 
+import java.awt.Point;
 import java.awt.event.ActionListener;
 
 /**
@@ -28,18 +29,17 @@ public interface Field {
 	
 	/**
 	 * Returns if the location is on the Field
-	 * @param testColumn The test column
-	 * @param testRow The test row
+	 * @param testLocation The Point to test
 	 * @return If the location is on the board
 	 */
-	public boolean isLocationOnField(int testColumn, int testRow);
+	public boolean isLocationOnField(Point testLocation);
 	
 	/**
 	 * Adds a Robot representation to the field
-	 * @param column The column of the Robot
-	 * @param row The row of the Robot
+	 * @param robotLocation the location to place the Robot
+	 * @param row the String that is displayed
 	 */
-	public void placeBot(int column, int row);
+	public void placeBot(Point robotLocation, String robotString);
 	
 	/**
 	 * Updates the field to display the most recent Robot information

@@ -1,30 +1,27 @@
 package edu.neumont.csc150.lab9.rollinsb;
 
+import java.awt.Point;
 import java.util.Random;
 
 /**
  * The BattleBot object contains all the information related to a BattleBot * 
  * @author Blake Rollins 
  */
-public class Robot {
+public abstract class Robot {
 
-	private int column;
-	private int row;
-	private int columnSpeed;
-	private int rowSpeed;
-	private Random rand;
+	protected Point location;
+	protected Point speed;
+	protected Random rand;
 
 	/**
 	 * The BattleBot needs a starting row and column and will set a random speed
 	 * @param columnIn
 	 * @param rowIn
 	 */
-	public Robot(int columnIn, int rowIn) {
+	public Robot(Point robotLocation) {
 		rand = new Random();
-		column = columnIn;
-		row = rowIn;
-		columnSpeed = getRandomSpeed();
-		rowSpeed = getRandomSpeed();
+		location = robotLocation;
+		speed = new Point(getRandomSpeed(),getRandomSpeed());
 	}
 
 	/**
@@ -35,12 +32,10 @@ public class Robot {
 	 * @param columnSpeedIn
 	 * @param rowSpeedIn
 	 */
-	public Robot(int columnIn, int rowIn, int columnSpeedIn, int rowSpeedIn) {
+	public Robot(Point robotLocation, Point robotSpeed) {
 		rand = new Random();
-		column = columnIn;
-		row = rowIn;
-		columnSpeed = columnSpeedIn;
-		rowSpeed = rowSpeedIn;
+		location = robotLocation;
+		speed = robotSpeed;
 	}
 
 	/**
@@ -48,7 +43,7 @@ public class Robot {
 	 * @return The current column value
 	 */
 	public int getColumn() {
-		return column;
+		return location.x;
 	}
 
 	/**
@@ -56,7 +51,7 @@ public class Robot {
 	 * @return The current columnSpeed value
 	 */
 	public int getColumnSpeed() {
-		return columnSpeed;
+		return speed.x;
 	}
 
 	/**
@@ -64,7 +59,7 @@ public class Robot {
 	 * @return The current row value
 	 */
 	public int getRow() {
-		return row;
+		return location.y;
 	}
 
 	/**
@@ -72,14 +67,14 @@ public class Robot {
 	 * @return The current rowSpeed value
 	 */
 	public int getRowSpeed() {
-		return rowSpeed;
+		return speed.y;
 	}
 	
 	/**
 	 * Returns a random BattleBot speed
 	 * @return a random BattleBot speed
 	 */
-	private int getRandomSpeed() {
+	protected int getRandomSpeed() {
 		return rand.nextInt(7) - 3;
 	}
 	
@@ -87,9 +82,8 @@ public class Robot {
 	 * Moves the BattleBot the specified number of time units
 	 * @param additionalTimeUnits
 	 */
-	public void move(int timeUnits) {
-		column += (columnSpeed * timeUnits);
-		row += (rowSpeed * timeUnits);
-	}
+	public abstract void move(int timeUnits);
+	
+	public abstract String getConsoleDisplay();
 
 }

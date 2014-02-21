@@ -1,5 +1,6 @@
 package edu.neumont.csc150.lab9.rollinsb;
 
+import java.awt.Point;
 import java.awt.event.ActionListener;
 
 /**
@@ -70,18 +71,18 @@ public class Console implements Field {
 	 * @return
 	 */
 	@Override
-	public boolean isLocationOnField(int testColumn, int testRow) {
-		return (testColumn >= 0 && testColumn < getNumberOfColumns()
-				&& testRow >= 0 && testRow < getNumberOfRows());
+	public boolean isLocationOnField(Point testLocation) {
+		return (testLocation.x >= 0 && testLocation.x < getNumberOfColumns()
+				&& testLocation.y >= 0 && testLocation.y < getNumberOfRows());
 	}
 
 	/**
 	 * Set the location to the occupied value
 	 */
 	@Override
-	public void placeBot(int column, int row) {
-		if (isLocationOnField(column, row)) {
-			fieldArray[column][row] = "X";
+	public void placeBot(Point robotLocation, String robotString) {
+		if (isLocationOnField(robotLocation)) {
+			fieldArray[robotLocation.x][robotLocation.y] = robotString;
 		}
 	}
 
