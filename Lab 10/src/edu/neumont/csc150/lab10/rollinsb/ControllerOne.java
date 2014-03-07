@@ -26,7 +26,7 @@ public class ControllerOne {
 	
 	/**
 	 * Actually runs ControllerOne.  Required a separate method to facilitate testing
-	 * @param args	A String[] of intergers (confusing right?)
+	 * @param args	A String[] of integers (confusing right?)
 	 * @return True if the args are all parseable as integers.
 	 */
 	public boolean run(String[] args) {
@@ -61,6 +61,7 @@ public class ControllerOne {
 	private void printUsage() {
 		System.out.println("Error: Unrecognized or incomplete command line arguments.");
 		System.out.println("Usage: java edu.neumont.csc150.lab10.rollinsb.ControllerOne 1 2 3 4");
+		System.out.println("       Where 1 2 3 4 are 4 valid integers");
 	}
 	
 	/**
@@ -71,7 +72,7 @@ public class ControllerOne {
 	 */
 	public boolean canParseInt(String intString) {
 		try {
-			int tempInt = Integer.parseInt(intString);
+			Integer.parseInt(intString);
 			return true;
 		} catch (Exception e) {
 			return false;
